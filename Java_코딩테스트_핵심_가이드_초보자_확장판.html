@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="수학과 알고리즘을 거의 처음부터 다시 배우는 사람을 위한 Java 코딩테스트 학습 가이드">
+<title>Java 코딩테스트 핵심 가이드 — 초보자 확장판</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f5ff;--card:#fff;--text:#1c2340;--muted:#657495;--border:#dce4f5;--side:#0c1428;--side-hv:#16213b;--side-on:#1b2f5a;--acc:#1fd4a2;--acc2:#5b7fff;--code:#0d1117;--codefg:#e5edf9;--soft:#f6f8fd;--shadow:0 10px 30px rgba(25,45,90,.05)}
+@media(prefers-color-scheme:dark){--bg:#080e1e;--card:#0f1729;--text:#d5def1;--muted:#9aa9c7;--border:#24304d;--side:#070b16;--side-hv:#101a2e;--side-on:#1b2f5a;--soft:#111c30;--shadow:none}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);display:flex;height:100dvh;overflow:hidden}button{font:inherit}.sidebar{width:286px;flex:0 0 286px;background:var(--side);color:#fff;display:flex;flex-direction:column;overflow-y:auto}.brand{padding:24px 20px 18px;border-bottom:1px solid rgba(255,255,255,.09)}.brand-tag{font-size:10px;letter-spacing:1.4px;color:var(--acc);font-weight:900;text-transform:uppercase;margin-bottom:8px}.brand h2{font-size:17px;line-height:1.45;margin:0;color:#fff}.brand p{font-size:11px;line-height:1.5;color:#7183a5;margin:9px 0 0}.study-note{padding:13px 16px;margin:14px 12px 6px;background:rgba(31,212,162,.08);border:1px solid rgba(31,212,162,.22);border-radius:10px;color:#b9c9e6;font-size:11px;line-height:1.65}.study-note b{color:var(--acc)}.navlist{padding:8px 0 20px}.navitem{display:flex;align-items:center;gap:10px;width:100%;padding:10px 16px;background:transparent;border:0;border-left:3px solid transparent;color:#8da0c3;text-align:left;cursor:pointer}.navitem:hover{background:var(--side-hv);color:#fff}.navitem.active{background:var(--side-on);border-left-color:var(--acc);color:#fff}.navnum{display:flex;align-items:center;justify-content:center;width:27px;height:27px;border-radius:7px;flex-shrink:0;font:bold 11px 'JetBrains Mono',monospace}.navtext{min-width:0;display:flex;flex-direction:column;gap:2px}.navtext b{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.navtext small{font-size:10px;color:#63789d}.sidebar-foot{margin-top:auto;padding:14px 18px;font-size:10px;color:#586b8c;line-height:1.7;border-top:1px solid rgba(255,255,255,.07)}.main{flex:1;min-width:0;overflow-y:auto;padding:34px clamp(18px,4vw,52px) 60px}.panel{display:none;max-width:1000px;margin:0 auto}.panel.active{display:block;animation:appear .16s ease-out}@keyframes appear{from{opacity:.45;transform:translateY(4px)}to{opacity:1;transform:none}}.pagehead{display:flex;gap:16px;align-items:flex-start;margin-bottom:26px}.badge{flex-shrink:0;margin-top:5px;border-radius:22px;padding:5px 11px;font-size:10px;font-weight:900;letter-spacing:.6px}.pagehead h1{font-size:clamp(26px,3vw,36px);line-height:1.25;letter-spacing:-.7px;margin:0}.eyebrow{font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.5px;margin:0 0 6px}.description{color:var(--muted);font-size:14px;line-height:1.8;margin:9px 0 0;max-width:72ch}.content{display:flex;flex-direction:column;gap:16px}.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px 24px;box-shadow:var(--shadow);line-height:1.85;font-size:14px}.card h3{font-size:17px;line-height:1.5;margin:0 0 12px;letter-spacing:-.25px}.card h4{font-size:14px;margin:0 0 8px}.card p{margin:8px 0}.card p:first-of-type{margin-top:0}.card p:last-child{margin-bottom:0}.card.feature{border-left:4px solid var(--acc2)}.big-quote{font-size:19px;font-weight:900;line-height:1.65;background:var(--soft);border-radius:10px;padding:15px 18px;margin:14px 0!important}.bullets{padding-left:21px;margin:8px 0}.bullets li{padding:3px 0}.bullets li::marker{color:var(--acc2)}.steps{padding-left:26px;margin:8px 0}.steps li{padding:5px 0 5px 4px}.steps li::marker{font-weight:900;color:var(--acc2)}code,pre{font-family:'JetBrains Mono',monospace}p code,li code{font-size:.91em;background:var(--soft);border:1px solid var(--border);border-radius:4px;padding:1px 4px;overflow-wrap:anywhere}.codebox{background:var(--code);border-radius:11px;overflow:hidden;margin:13px 0;color:var(--codefg)}.codehead{display:flex;justify-content:space-between;align-items:center;padding:9px 13px;border-bottom:1px solid rgba(255,255,255,.09);font:11px 'JetBrains Mono',monospace;color:#9aabc8}.codehead b{font-weight:600;color:#7c9bff}.copy{border:1px solid #3b4860;background:#182235;color:#d8e3f8;border-radius:6px;padding:4px 8px;font-size:10px;cursor:pointer}.copy:hover{background:#253651}pre{margin:0;padding:16px;overflow-x:auto;font-size:12px;line-height:1.8;tab-size:4}pre code{font:inherit;white-space:pre}.note{padding:11px 13px;border-radius:8px;background:var(--soft);border:1px dashed var(--border);color:var(--muted);font-size:12px}.mini-table{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:13px 0}.mini-table>div{display:flex;flex-direction:column;gap:5px;padding:12px 13px;border:1px solid var(--border);border-radius:9px;background:var(--soft)}.mini-table b{font-size:13px}.mini-table span{font-size:12px;line-height:1.6}.mini-table em{font-style:normal;font-size:11px;color:var(--muted);line-height:1.6}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}.trace{display:flex;flex-direction:column;margin:13px 0;border:1px solid var(--border);border-radius:9px;overflow:hidden;font-size:12px}.trace>div{display:grid;grid-template-columns:minmax(55px,.55fr) minmax(90px,1fr) minmax(120px,1.6fr);gap:8px;padding:9px 12px;border-bottom:1px solid var(--border)}.trace>div:first-child{background:var(--soft);font-weight:900}.trace>div:last-child{border-bottom:0}.trace span{overflow-wrap:anywhere}.check{border:1px solid var(--border);border-radius:10px;background:var(--soft);padding:13px 15px}.check summary{cursor:pointer;font-weight:800;font-size:13px;line-height:1.7}.answer{padding:12px 2px 2px;border-top:1px solid var(--border);margin-top:12px;font-size:13px;line-height:1.8}.answer p{margin:3px 0 12px}.answer p:last-child{margin-bottom:0}.problem-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin-top:14px}.problem{display:flex;flex-direction:column;gap:5px;min-height:122px;padding:13px 14px;border:1px solid var(--border);border-radius:10px;background:var(--soft);text-decoration:none;color:var(--text);transition:transform .15s,border-color .15s}.problem:hover{transform:translateY(-2px);border-color:var(--acc2)}.problem .level{font-size:10px;color:var(--acc2);font-weight:900}.problem b{font-size:13px}.problem span:not(.level){font-size:11px;color:var(--muted)}.problem small{margin-top:auto;color:var(--acc2);font-size:10px}.worksheet{padding:14px 16px;background:var(--soft);border:1px dashed var(--border);border-radius:9px;font-size:13px}.worksheet p{padding:5px 0;border-bottom:1px dashed var(--border)}.worksheet p:last-child{border:0}.roadmap{display:flex;flex-direction:column;gap:10px}.roadmap>div{display:grid;grid-template-columns:90px 1fr;gap:4px 12px;padding:14px;border:1px solid var(--border);border-radius:10px;background:var(--soft)}.roadmap>div>b{grid-row:span 2;color:var(--acc2);font-size:12px}.roadmap strong{font-size:13px}.roadmap p{font-size:12px;color:var(--muted);margin:0}.review-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:13px 0}.review-grid>div{padding:11px 8px;background:var(--soft);border:1px solid var(--border);border-radius:8px;display:flex;flex-direction:column;gap:6px}.review-grid b{font-size:12px;color:var(--acc2)}.review-grid span{font-size:11px;line-height:1.55}.footer-nav{display:flex;justify-content:space-between;gap:12px;margin-top:30px;padding-top:18px;border-top:1px solid var(--border)}.footer-nav button{background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:10px 14px;cursor:pointer;font-size:12px}.footer-nav button:disabled{opacity:.35;cursor:not-allowed}.progress{height:3px;background:#263653;position:sticky;top:0;z-index:2}.progress span{display:block;height:100%;background:var(--acc);width:0;transition:width .2s}
+@media(max-width:800px){body{height:auto;min-height:100dvh;display:block;overflow:auto}.sidebar{width:100%;height:auto;max-height:none;display:block;overflow:visible}.brand{padding:16px 18px}.brand h2{font-size:15px}.study-note{margin:10px 12px}.navlist{display:flex;gap:6px;overflow-x:auto;padding:8px 10px 12px;scrollbar-width:thin}.navitem{width:auto;min-width:150px;flex:0 0 auto;border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:8px 10px}.navitem.active{border:1px solid var(--acc)}.sidebar-foot{display:none}.main{padding:24px 14px 40px;overflow:visible}.card{padding:18px 16px}.pagehead{gap:10px}.badge{font-size:9px;padding:5px 8px}.pagehead h1{font-size:25px}.review-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.two-col{grid-template-columns:1fr}.footer-nav{margin-top:20px}}
+@media(max-width:420px){.mini-table{grid-template-columns:1fr}.problem-grid{grid-template-columns:1fr 1fr}.problem{padding:11px;min-width:0}.problem b{font-size:12px}.trace>div{grid-template-columns:42px minmax(65px,1fr) minmax(90px,1.4fr);gap:5px;padding:8px;font-size:11px}.roadmap>div{grid-template-columns:65px 1fr}pre{font-size:11px;padding:13px}}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <div class="brand"><div class="brand-tag">Java Coding Test · Beginner Edition</div><h2>알고리즘 핵심 가이드<br>처음부터 이해하는 버전</h2><p>요약 암기장이 아니라, 왜 그런 코드를 쓰는지 배우는 학습용 가이드</p></div>
+  <div class="study-note"><b>공부 원칙</b><br>예제 손으로 풀기 → 코드 읽기 → 안 보고 다시 쓰기 → 다음 날 복습</div>
+  <nav class="navlist" id="navlist"><button class="navitem active" data-target="p1" type="button"><span class="navnum" style="background:#1FD4A225;color:#1FD4A2">1</span><span class="navtext"><b>코테 입문과 문제 풀이</b><small>시작하기 · 필수</small></span></button><button class="navitem" data-target="p2" type="button"><span class="navnum" style="background:#5B7FFF25;color:#5B7FFF">2</span><span class="navtext"><b>문자열</b><small>Section 2 · 12강</small></span></button><button class="navitem" data-target="p3" type="button"><span class="navnum" style="background:#5B7FFF25;color:#5B7FFF">3</span><span class="navtext"><b>배열과 2차원 배열</b><small>Section 3 · 12강</small></span></button><button class="navitem" data-target="p4" type="button"><span class="navnum" style="background:#F472B625;color:#F472B6">4</span><span class="navtext"><b>투 포인터와 슬라이딩 윈도우</b><small>Section 4 · 7강</small></span></button><button class="navitem" data-target="p5" type="button"><span class="navnum" style="background:#F472B625;color:#F472B6">5</span><span class="navtext"><b>HashMap과 TreeSet</b><small>Section 5 · 5강</small></span></button><button class="navitem" data-target="p6" type="button"><span class="navnum" style="background:#FBBF2425;color:#FBBF24">6</span><span class="navtext"><b>스택과 큐</b><small>Section 6 · 8강</small></span></button><button class="navitem" data-target="p7" type="button"><span class="navnum" style="background:#FBBF2425;color:#FBBF24">7</span><span class="navtext"><b>정렬과 이분 탐색</b><small>Section 7 · 10강</small></span></button><button class="navitem" data-target="p8" type="button"><span class="navnum" style="background:#1FD4A225;color:#1FD4A2">8</span><span class="navtext"><b>재귀와 DFS</b><small>Section 8 · 14강</small></span></button><button class="navitem" data-target="p9" type="button"><span class="navnum" style="background:#1FD4A225;color:#1FD4A2">9</span><span class="navtext"><b>BFS와 최단거리</b><small>Section 9 · 16강</small></span></button><button class="navitem" data-target="p10" type="button"><span class="navnum" style="background:#A78BFA25;color:#A78BFA">10</span><span class="navtext"><b>그리디 알고리즘</b><small>Section 10 · 9강</small></span></button><button class="navitem" data-target="p11" type="button"><span class="navnum" style="background:#A78BFA25;color:#A78BFA">11</span><span class="navtext"><b>동적 프로그래밍과 점화식</b><small>Section 11 · 8강</small></span></button><button class="navitem" data-target="p12" type="button"><span class="navnum" style="background:#1FD4A225;color:#1FD4A2">12</span><span class="navtext"><b>복습과 실전 학습법</b><small>마지막 정리</small></span></button></nav>
+  <div class="sidebar-foot">개인 학습용 정리<br>외부 링크는 프로그래머스 문제 페이지로 연결됩니다.</div>
+</aside>
+<main class="main" id="main">
+  <div class="progress"><span id="progressbar"></span></div>
+  <section class="panel active" id="p1" data-title="코테 입문과 문제 풀이">
+      <header class="pagehead"><span class="badge" style="background:#1FD4A220;color:#1FD4A2">START</span><div><p class="eyebrow">시작하기 · 필수</p><h1>코테 입문과 문제 풀이</h1><p class="description">공식보다 먼저, 문제를 어떻게 읽고 작은 예제로 검증할지부터 익힌다.</p></div></header>
+      <div class="content"><article class="card feature"><h3>먼저 알아둘 것: 코딩 테스트는 수학 시험이 아니다</h3><p>코딩 테스트는 어려운 공식을 많이 아는 사람이 무조건 이기는 시험이 아니야. 대부분은 <b>문제를 작은 단계로 나누고, 같은 계산을 반복하지 않게 만들고, 그 과정을 Java로 정확히 옮기는 능력</b>을 보는 거야.</p><p>수학을 오래전에 배웠다면 공식을 외우기 전에 숫자 몇 개를 직접 써서 규칙을 발견하는 방식으로 배우면 돼. 아래 설명은 “정의부터 외우기”가 아니라 “예시를 보고 이유를 이해한 뒤, 짧은 코드 패턴을 외우기” 순서로 되어 있어.</p><p class="note">코드 블록은 알고리즘의 핵심을 설명하는 학습용 예제야. 일부는 클래스·main·import·입력 처리 등을 생략했으므로, 그대로 붙여 넣어 실행하는 완성 프로그램이 아닐 수 있어.</p></article><article class="card "><h3>문제 풀이의 6단계</h3><ol class="steps"><li><b>입력과 출력 찾기:</b> 무엇을 받으며, 최종적으로 무엇을 반환해야 하는지 한 문장으로 적는다.</li><li><b>예제를 손으로 풀기:</b> 코드부터 쓰지 말고 예제의 중간 결과를 종이에 적는다.</li><li><b>가장 단순한 방법 떠올리기:</b> 모든 경우를 하나씩 확인한다면 어떻게 할지 먼저 생각한다.</li><li><b>느린 부분 찾기:</b> 같은 값을 계속 다시 계산하는지, 불필요하게 모든 쌍을 비교하는지 본다.</li><li><b>알고리즘 패턴 고르기:</b> 정렬, 해시, 투 포인터, 스택, BFS, DP 중 어떤 도구가 맞는지 정한다.</li><li><b>작은 예제로 검산하기:</b> 빈 입력, 원소 한 개, 중복 값, 최솟값·최댓값을 확인한다.</li></ol></article><article class="card "><h3>시간 복잡도는 “입력이 커졌을 때 얼마나 일이 늘어날까?”</h3><p><b>n</b>은 보통 데이터 개수야. 예를 들어 배열에 숫자가 10개 있으면 n=10이라고 쓰는 거지. 정확한 초를 계산하기보다 데이터가 커질 때 일이 얼마나 빠르게 늘어나는지 비교해.</p><div class="mini-table"><div><b>O(1)</b><span>데이터가 커져도 작업 수가 거의 일정</span><em>배열의 arr[3] 읽기</em></div><div><b>O(log n)</b><span>범위를 매번 절반으로 줄임</span><em>정렬된 배열 이분 탐색</em></div><div><b>O(n)</b><span>데이터를 한 번씩 확인</span><em>배열 전체 합 구하기</em></div><div><b>O(n log n)</b><span>정렬에서 흔히 만나는 수준</span><em>Arrays.sort()</em></div><div><b>O(n²)</b><span>각 원소마다 전체를 다시 확인</span><em>모든 두 원소 쌍 비교</em></div></div><p>예를 들어 숫자 1,000개를 한 번씩 확인하면 대략 1,000번이지만, 이중 반복문은 대략 1,000×1,000=1,000,000번까지 갈 수 있어. 이 차이를 줄이는 것이 알고리즘 공부의 큰 목표야.</p></article><article class="card "><h3>반복문을 처음부터 읽는 법</h3><div class="codebox"><div class="codehead"><b>배열의 합을 구하는 코드</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>int sum = 0;
+for (int i = 0; i &lt; arr.length; i++) {
+    sum += arr[i];
+}</code></pre></div><p><code>sum = 0</code>은 누적할 그릇을 비우는 거야. <code>i = 0</code>은 첫 번째 칸부터 시작한다는 뜻이고, <code>i &lt; arr.length</code>는 배열의 마지막 칸까지 확인하겠다는 뜻이야. <code>sum += arr[i]</code>는 기존 sum에 현재 칸의 숫자를 더해 다시 sum에 넣으라는 의미야.</p><div class="trace"><div><b>현재 i</b><span>arr[i]</span><span>더한 뒤 sum</span></div><div><b>0</b><span>4</span><span>0 + 4 = 4</span></div><div><b>1</b><span>7</span><span>4 + 7 = 11</span></div><div><b>2</b><span>2</span><span>11 + 2 = 13</span></div></div><p>반복문이 헷갈릴 때는 머릿속으로 한 번에 이해하려고 하지 말고, <b>i, 현재 값, 변수 값</b>을 표로 적어. 이 습관이 투 포인터·BFS·DP를 이해할 때도 그대로 쓰인다.</p></article><article class="card "><h3>하루 공부 방법: 복사해서 끝내지 않기</h3><ol class="steps"><li><b>5분 — 문제를 읽고 요구사항을 말로 바꾸기.</b> “배열에서 조건을 만족하는 구간을 찾는다”처럼 적는다.</li><li><b>10분 — 예제를 손으로 따라가기.</b> 각 변수에 어떤 값이 들어가는지 표를 만든다.</li><li><b>15~20분 — 스스로 코드 작성.</b> 막히면 전체 정답을 바로 보지 말고 핵심 개념이나 첫 번째 힌트만 본다.</li><li><b>10분 — 해설과 내 풀이 비교.</b> 틀린 이유를 “인덱스 실수”, “패턴을 몰랐음”, “조건을 잘못 해석함” 중 하나로 기록한다.</li><li><b>5~10분 — 해설을 닫고 다시 작성.</b> 복사해서 맞힌 건 내 실력이 아니야. 빈 화면에서 다시 쓸 수 있어야 해.</li><li><b>다음 날 — 같은 코드를 안 보고 재현.</b> 그 다음 3일·7일·14일 뒤에 짧게 다시 푼다.</li></ol></article><article class="card feature"><h3>외워야 하는 것과 이해해야 하는 것</h3><div class="two-col"><div><h4>외워도 되는 것</h4><ul class="bullets"><li>자주 쓰는 Java API 이름과 사용 형태</li><li>투 포인터에서 포인터를 움직이는 기본 규칙</li><li>BFS의 큐·방문 처리 순서</li><li>이분 탐색과 DP의 기본 코드 뼈대</li></ul></div><div><h4>이유까지 알아야 하는 것</h4><ul class="bullets"><li>왜 그 조건에서 포인터를 움직이는가</li><li>방문 체크를 언제 해야 중복 탐색을 막는가</li><li>dp[i]가 정확히 무엇을 뜻하는가</li><li>정렬 순서가 왜 정답에 영향을 주는가</li></ul></div></div><p>결론은 <b>이해 1번 → 코드 뼈대 암기 → 안 보고 재현 → 다른 문제에 적용</b>이야. “닥치고 외우기”만 하면 문제 모양이 살짝 바뀌었을 때 무너지지만, 이해만 하고 반복하지 않아도 시험장에서 코드가 안 나와. 둘 다 필요해.</p></article><article class="card "><h3>이 가이드를 사용하는 순서</h3><p>처음부터 모든 단원을 완벽하게 이해하려 하지 마. ① 기초·복잡도 → ② 문자열·배열 → ③ 해시·스택/큐 → ④ 정렬·탐색 → ⑤ 투 포인터 → ⑥ DFS/BFS → ⑦ 그리디 → ⑧ DP 순서로 공부하는 걸 추천해. 한 단원에서 추천 문제 1~2개를 풀어 보고, 설명 없이 기본 코드를 다시 쓸 수 있으면 다음으로 넘어가.</p><p class="note">중요: 처음에는 어려운 Lv.3 문제를 붙들고 자존심 싸움 하지 말기. 지금은 실력 증명보다 “기본 패턴을 알아보고 재현할 수 있는 상태”를 만드는 게 우선이야.</p></article><details class="check"><summary>직접 생각해 보기: 배열 원소가 1,000개일 때 이중 반복문은 대략 몇 번의 비교를 할 수 있을까?</summary><div class="answer"><b>답</b><p>약 1,000,000번(100만 번)까지 할 수 있어.</p><b>왜?</b><p>바깥 반복문 1,000번마다 안쪽 반복문이 1,000번 실행되면 1,000 × 1,000이 된다. 모든 이중 반복문이 정확히 이 횟수인 건 아니지만 O(n²)의 감을 잡는 예시야.</p></div></details></div>
+    </section><section class="panel" id="p2" data-title="문자열">
+      <header class="pagehead"><span class="badge" style="background:#5B7FFF20;color:#5B7FFF">STRING</span><div><p class="eyebrow">Section 2 · 12강</p><h1>문자열</h1><p class="description">문자 인덱스, 문자열 비교, 빈도 세기, StringBuilder를 예제로 익힌다.</p></div></header>
+      <div class="content"><article class="card feature"><h3>문자열은 “글자들이 순서대로 붙어 있는 것”</h3><p><code>"cat"</code>은 문자 <code>c</code>, <code>a</code>, <code>t</code>가 차례대로 있는 문자열이야. 첫 번째 글자의 인덱스는 0이야. 그래서 <code>str.charAt(0)</code>은 <code>c</code>를 반환하고, <code>str.length()</code>는 3을 반환해.</p><p>Java의 <code>String</code>은 한 번 만들어지면 내부 내용을 직접 바꾸지 않아. 예를 들어 <code>str = str + "!"</code>은 기존 문자열에 글자를 붙여 바꾸는 것처럼 보여도, 새로운 문자열을 만들어 변수에 다시 넣는 방식이야. 여러 번 붙일 때는 <code>StringBuilder</code>가 편리하다.</p></article><article class="card "><h3>기본 예제: 글자 하나씩 확인하기</h3><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>String str = &quot;cat&quot;;
+
+for (int i = 0; i &lt; str.length(); i++) {
+    char c = str.charAt(i);
+    System.out.println(c);
+}</code></pre></div><p>반복문 첫 회에는 i=0이라 <code>c</code>, 다음에는 i=1이라 <code>a</code>, 마지막에는 i=2라 <code>t</code>를 출력해. <code>charAt(i)</code>의 i는 “몇 번째 글자인지”를 뜻하는 번호야. 실제 사람의 첫 번째는 Java에서 인덱스 0이라는 점을 기억하자.</p></article><article class="card "><h3>패턴 1 — 문자열 뒤집기와 팰린드롬</h3><p><b>팰린드롬</b>은 앞에서 읽어도 뒤에서 읽어도 같은 문자열이야. 예를 들어 <code>"level"</code>은 팰린드롬이고 <code>"java"</code>는 아니야. 가장 쉬운 방법은 문자열을 뒤집은 뒤 원본과 같은지 비교하는 거야.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>String str = &quot;level&quot;;
+String reversed = new StringBuilder(str).reverse().toString();
+boolean isPalindrome = str.equals(reversed);</code></pre></div><p><code>reverse()</code>는 뒤집고, <code>toString()</code>은 결과를 String으로 돌려줘. 문자열의 내용 비교는 <code>==</code>가 아니라 <code>equals()</code>를 써. <code>==</code>는 문자열 내용이 아니라 참조가 같은지 비교하는 용도라서 코테 문자열 비교에는 보통 맞지 않아.</p></article><article class="card "><h3>패턴 2 — 글자 빈도 세기</h3><p>문자열에서 알파벳이 몇 번 나오는지 세고 싶다고 해 보자. 알파벳 소문자는 26개뿐이니 숫자 26개를 저장하는 칸을 만들고, 각 글자가 나올 때마다 해당 칸을 1씩 올리면 돼.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>String str = &quot;banana&quot;;
+int[] freq = new int[26];
+
+for (char c : str.toCharArray()) {
+    freq[c - &#x27;a&#x27;]++;
+}
+// b는 freq[1], a는 freq[0], n은 freq[13]에 저장된다.</code></pre></div><p><code>c - 'a'</code>는 알파벳을 0~25 숫자로 바꾸는 트릭이야. 단, 이 코드는 <b>영문 소문자 a~z만 입력된다는 조건</b>이 있어야 해. 대문자나 한글이 들어오면 배열 범위를 벗어날 수 있어. 모든 문자에 대응해야 한다면 <code>HashMap&lt;Character, Integer&gt;</code>를 쓰면 돼.</p></article><article class="card "><h3>패턴 3 — 숫자만 남기기와 문자열 조립</h3><p><code>replaceAll()</code>은 정규식에 맞는 부분을 바꿔 줘. <code>"[^0-9]"</code>는 숫자 0~9가 아닌 문자 하나를 뜻하므로, 아래 코드는 숫자가 아닌 문자를 모두 지워.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>String raw = &quot;전화: 010-1234-5678&quot;;
+String digits = raw.replaceAll(&quot;[^0-9]&quot;, &quot;&quot;);
+// digits: &quot;01012345678&quot;
+
+StringBuilder sb = new StringBuilder();
+for (int i = 1; i &lt;= 5; i++) {
+    sb.append(i);
+}
+String result = sb.toString(); // &quot;12345&quot;</code></pre></div><p><code>StringBuilder</code>의 <code>append()</code>는 뒤에 내용을 이어 붙여. 문자열을 반복해서 조립할 때 유용해. 다만 <code>Integer.parseInt(digits)</code>는 숫자 문자열이 비어 있거나 int 범위를 넘으면 예외가 발생할 수 있으니, 입력 조건을 확인해야 해.</p></article><article class="card "><h3>문자열 문제를 만나면 이 순서로 생각하기</h3><ol class="steps"><li>문자열을 글자 단위로 볼까, 부분 문자열 단위로 볼까?</li><li>원본을 바꿔야 할까? 단순 검색이면 String 메서드로 충분하고, 반복 조립이면 StringBuilder를 고려한다.</li><li>글자의 위치가 중요할까? 그렇다면 인덱스·투 포인터를 생각한다.</li><li>글자별 등장 횟수가 중요할까? 그렇다면 빈도 배열 또는 HashMap을 생각한다.</li><li>숫자나 특정 문자만 뽑아야 할까? replaceAll 정규식 또는 직접 순회를 생각한다.</li></ol></article><article class="card "><h3>이 단원에서 먼저 외울 것</h3><ul class="bullets "><li><code>str.length()</code>: 문자열 길이</li><li><code>str.charAt(i)</code>: i번째 문자</li><li><code>str.toCharArray()</code>: 문자 배열로 변환</li><li><code>str.equals(other)</code>: 내용 비교</li><li><code>new StringBuilder(str).reverse().toString()</code>: 뒤집기</li><li><code>sb.append(value)</code>: 문자열 조립</li></ul></article><details class="check"><summary>직접 생각해 보기: 문자열 내용이 같은지 확인하려면 보통 ==와 equals() 중 무엇을 사용할까?</summary><div class="answer"><b>답</b><p>equals()를 사용한다.</p><b>왜?</b><p>String의 ==는 두 변수가 같은 객체를 가리키는지 확인하고, equals()는 문자열 내용이 같은지 확인한다.</p></div></details><div class="problem-grid"><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/12926" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.1</span><b>시저 암호</b><span>문자 치환 · 아스키 문자</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/72410" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.1</span><b>신규 아이디 추천</b><span>정규식 · 문자열 정제</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/60057" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.2</span><b>문자열 압축</b><span>반복 패턴 압축</span><small>문제 열기 ↗</small></a></div></div>
+    </section><section class="panel" id="p3" data-title="배열과 2차원 배열">
+      <header class="pagehead"><span class="badge" style="background:#5B7FFF20;color:#5B7FFF">ARRAY</span><div><p class="eyebrow">Section 3 · 12강</p><h1>배열과 2차원 배열</h1><p class="description">배열 인덱스, 정렬, 누적합, 소수 판별, 격자 이동을 하나씩 따라간다.</p></div></header>
+      <div class="content"><article class="card feature"><h3>배열은 “번호가 붙은 사물함”</h3><p>배열은 같은 종류의 값을 여러 개 저장해 두는 공간이야. <code>int[] arr = {4, 7, 2}</code>라고 하면 번호 0번 칸에 4, 1번 칸에 7, 2번 칸에 2가 들어 있어. 배열 길이는 3이고 마지막 인덱스는 2야. 그래서 마지막 원소는 <code>arr[arr.length - 1]</code>로 접근해.</p><p>배열 문제의 기본은 “몇 번째 칸을 보고 있는지”를 정확히 추적하는 거야. 범위를 넘어 <code>arr[3]</code>처럼 접근하면 <code>ArrayIndexOutOfBoundsException</code>이 발생해.</p></article><article class="card "><h3>패턴 1 — 최댓값·최솟값·합</h3><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>int[] arr = {4, 7, 2, 9};
+int sum = 0;
+int max = arr[0];
+int min = arr[0];
+
+for (int value : arr) {
+    sum += value;
+    max = Math.max(max, value);
+    min = Math.min(min, value);
+}
+// sum = 22, max = 9, min = 2</code></pre></div><p>처음 max를 0으로 잡으면 배열의 값이 전부 음수일 때 잘못된 답이 될 수 있어. 그래서 비어 있지 않은 배열이라는 조건에서 첫 원소 <code>arr[0]</code>로 시작하는 게 안전해. <code>for (int value : arr)</code>는 배열 원소를 하나씩 꺼내 쓰는 반복문이야.</p></article><article class="card "><h3>패턴 2 — 정렬</h3><p>정렬은 데이터를 순서대로 배열하는 일이야. <code>Arrays.sort(arr)</code>는 int 배열을 오름차순으로 정렬해. 숫자 3, 1, 2는 1, 2, 3이 된다. 정렬을 먼저 하면 최소값·최대값을 쉽게 찾거나, 이분 탐색과 그리디를 사용할 수 있는 경우가 많아.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>int[] nums = {5, 1, 8, 2};
+Arrays.sort(nums); // [1, 2, 5, 8]
+
+Integer[] boxed = {5, 1, 8, 2};
+Arrays.sort(boxed, Collections.reverseOrder()); // [8, 5, 2, 1]</code></pre></div><p>기본형 <code>int[]</code>에는 <code>Collections.reverseOrder()</code>를 직접 적용할 수 없어. 내림차순 정렬 예시는 <code>Integer[]</code>처럼 객체 배열을 사용해. 숫자가 매우 크다면 비교식 <code>a - b</code>보다 <code>Integer.compare(a, b)</code>를 사용하는 것이 오버플로 위험을 피하는 데 좋다.</p></article><article class="card "><h3>패턴 3 — 누적합: 앞에서 계산한 합을 재사용하기</h3><p>배열에서 2번~5번 칸의 합처럼 구간 합을 자주 물어보는 문제가 있어. 매번 해당 구간을 다시 더하면 질문이 많을 때 느려질 수 있어. <b>누적합</b>은 “첫 번째부터 지금 칸까지의 합”을 미리 저장하는 배열이야.</p><p>예를 들어 <code>arr = [2, 4, 1, 3]</code>이면 누적합은 <code>prefix = [2, 6, 7, 10]</code>이야. 인덱스 1부터 3까지의 합은 prefix[3] - prefix[0] = 10 - 2 = 8이 돼. 아래 코드는 0부터 시작하는 인덱스 기준이야.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>int[] arr = {2, 4, 1, 3};
+int[] prefix = new int[arr.length];
+prefix[0] = arr[0];
+
+for (int i = 1; i &lt; arr.length; i++) {
+    prefix[i] = prefix[i - 1] + arr[i];
+}
+
+// 인덱스 left부터 right까지의 합
+int rangeSum = prefix[right];
+if (left &gt; 0) {
+    rangeSum -= prefix[left - 1];
+}</code></pre></div><p>왜 빼는지 이해하려면 전체 앞부분을 생각해 봐. <code>prefix[right]</code>는 0부터 right까지 전부 포함해. 우리가 원하는 건 left부터니까, 필요 없는 0~left-1의 합을 빼는 거야. 단, 인덱스와 숫자 위치를 혼동하지 말고 문제의 범위가 0-based인지 1-based인지 확인해야 해.</p></article><article class="card "><h3>패턴 4 — 소수 목록을 빠르게 만들기: 에라토스테네스의 체</h3><p>소수는 1보다 큰 수 중에서 1과 자기 자신으로만 나누어 떨어지는 수야. 소수를 하나씩 매번 나눠 보는 대신, 소수의 배수는 소수가 아니라고 표시하면 빠르게 목록을 만들 수 있어. 2의 배수, 3의 배수, 5의 배수처럼 지워 나가는 방식이지.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>int n = 30;
+boolean[] isPrime = new boolean[n + 1];
+Arrays.fill(isPrime, true);
+isPrime[0] = false;
+isPrime[1] = false;
+
+for (int i = 2; i * i &lt;= n; i++) {
+    if (!isPrime[i]) continue;
+    for (int j = i * i; j &lt;= n; j += i) {
+        isPrime[j] = false;
+    }
+}</code></pre></div><p><code>isPrime[x]</code>가 true면 현재까지 소수 후보라는 뜻이야. <code>j = i * i</code>부터 시작하는 이유는 i보다 작은 배수들은 더 작은 소수의 단계에서 이미 지워졌기 때문이야. 이 코드는 n이 1 이상인 상황을 가정해. 실전에서는 입력 범위와 배열 크기를 먼저 확인하자.</p></article><article class="card "><h3>2차원 배열과 dx/dy</h3><p>2차원 배열은 표나 게임판처럼 행과 열이 있는 배열이야. <code>grid[x][y]</code>에서 x는 행 번호, y는 열 번호로 쓰는 경우가 많아. 위·아래·왼쪽·오른쪽으로 움직일 때는 이동량을 배열에 저장해 두면 반복 코드가 줄어들어.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>int[] dx = {-1, 1, 0, 0}; // 행 이동: 위, 아래, 그대로, 그대로
+int[] dy = {0, 0, -1, 1}; // 열 이동: 그대로, 그대로, 왼쪽, 오른쪽
+
+for (int d = 0; d &lt; 4; d++) {
+    int nx = x + dx[d];
+    int ny = y + dy[d];
+
+    if (nx &lt; 0 || nx &gt;= rows || ny &lt; 0 || ny &gt;= cols) {
+        continue; // 격자 밖이면 건너뛴다
+    }
+    // 여기부터는 grid[nx][ny]에 접근해도 범위 안이다.
+}</code></pre></div><p><code>rows</code>는 행의 개수, <code>cols</code>는 열의 개수야. x와 y를 반대로 쓰면 방향이 뒤틀릴 수 있으니, 문제마다 “첫 번째 인덱스는 행, 두 번째는 열”인지 확인하고 일관되게 사용하자.</p></article><article class="card "><h3>배열 문제 체크리스트</h3><ul class="bullets "><li>인덱스는 0부터 시작한다. 길이가 n인 배열의 유효 인덱스는 0~n-1이다.</li><li>정렬이 필요한 이유가 무엇인지 말할 수 있는가?</li><li>같은 구간의 합을 여러 번 구한다면 누적합이 유리한가?</li><li>2차원 이동은 범위 체크를 한 후 배열에 접근하는가?</li><li>입력이 비어 있을 가능성이나 n이 작은 경우도 고려했는가?</li></ul></article><details class="check"><summary>직접 생각해 보기: arr가 [2, 4, 1, 3]이고 prefix가 [2, 6, 7, 10]일 때 인덱스 1~3의 합은?</summary><div class="answer"><b>답</b><p>8이다.</p><b>왜?</b><p>prefix[3]은 0~3의 합인 10이고, prefix[0]은 원하지 않는 0번째 값 2다. 따라서 10 - 2 = 8이다.</p></div></details><div class="problem-grid"><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/42748" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.1</span><b>K번째수</b><span>정렬 · 구간 자르기</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/12977" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.1</span><b>소수 만들기</b><span>조합 · 소수 판별</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/12949" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.2</span><b>행렬의 곱셈</b><span>2차원 배열</span><small>문제 열기 ↗</small></a></div></div>
+    </section><section class="panel" id="p4" data-title="투 포인터와 슬라이딩 윈도우">
+      <header class="pagehead"><span class="badge" style="background:#F472B620;color:#F472B6">O(N)</span><div><p class="eyebrow">Section 4 · 7강</p><h1>투 포인터와 슬라이딩 윈도우</h1><p class="description">구간을 처음부터 다시 계산하지 말고, 왼쪽·오른쪽 경계를 움직이며 관리한다.</p></div></header>
+      <div class="content"><article class="card feature"><h3>투 포인터와 슬라이딩 윈도우가 필요한 이유</h3><p>연속된 숫자의 합을 찾는다고 해 보자. 단순한 방법은 시작점을 하나 정하고, 그 뒤에 가능한 구간을 전부 더하는 거야. 하지만 구간을 조금 옮길 때 이전에 더한 숫자를 또 더한다면 낭비가 생기지.</p><p><b>투 포인터</b>는 보통 두 위치(lt, rt)를 움직이며 범위를 관리하는 방법이고, <b>슬라이딩 윈도우</b>는 그중에서도 창문처럼 연속 구간을 옆으로 밀어 가며 유지하는 기법이야. 둘은 겹치는 개념이지만 완전히 같은 말은 아니야.</p></article><article class="card "><h3>투 포인터의 핵심: 범위가 어떻게 변하는지 보기</h3><p>예를 들어 양수 배열 <code>[1, 2, 1, 3, 1]</code>에서 합이 3인 연속 구간을 찾아 보자. 처음에는 왼쪽 lt=0, 오른쪽 rt=0이고 합은 1이야. 합이 3보다 작으므로 오른쪽을 늘려 숫자 2를 더해. 합이 3이 되었으니 구간을 하나 찾았고, 다음 숫자를 더하면 합이 커지니 왼쪽을 줄여 범위를 조절할 수 있어.</p><div class="trace"><div><b>right</b><span>유효 구간</span><span>합 / 결과</span></div><div><b>0</b><span>[1]</span><span>1 — 작으니 확장</span></div><div><b>1</b><span>[1,2]</span><span>3 — 구간 1개 발견</span></div><div><b>2</b><span>[2,1]</span><span>3 — 왼쪽 1을 빼고 구간 2개째</span></div><div><b>3</b><span>[3]</span><span>3 — 구간 3개째 발견</span></div><div><b>4</b><span>[1]</span><span>1 — target보다 작음</span></div></div><p>이 예제는 모든 배열 원소가 양수야. 양수만 있으면 오른쪽 숫자를 더할수록 합이 커지고 왼쪽 숫자를 빼면 합이 작아져. 그래서 어떤 방향으로 움직여야 할지 판단할 수 있어.</p></article><article class="card "><h3>템플릿 — 양수 배열에서 합이 target인 연속 구간 개수 세기</h3><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>int left = 0;
+int sum = 0;
+int count = 0;
+
+for (int right = 0; right &lt; arr.length; right++) {
+    sum += arr[right]; // 오른쪽 끝을 한 칸 확장
+
+    while (sum &gt; target &amp;&amp; left &lt;= right) {
+        sum -= arr[left]; // 합이 너무 크면 왼쪽을 줄임
+        left++;
+    }
+
+    if (sum == target) {
+        count++;
+    }
+}</code></pre></div><p><b>전제:</b> 이 기본 템플릿은 배열 원소가 양수이고, 찾는 값이 양수인 상황을 설명하는 패턴이야. 음수 원소가 있으면 오른쪽 숫자를 추가했을 때 합이 작아질 수도 있으므로 이 논리가 깨져. 또 이 코드는 각 오른쪽 끝에서 합이 target인 구간을 최대 하나 찾는 형태로, 양수 배열에서는 적합하지만 0이 포함되거나 모든 가능한 구간을 세야 하는 다른 조건에서는 별도 검토가 필요해.</p><p><b>코드 읽는 법:</b> right는 오른쪽 끝을 계속 이동해. sum이 너무 크면 left를 옮겨 왼쪽 값을 빼. 마지막에 합이 target과 같은지 검사해. 구간을 일일이 다시 계산하는 대신 더하고 빼는 값만 갱신하는 것이 핵심이야.</p></article><article class="card "><h3>고정 크기 슬라이딩 윈도우</h3><p>이번에는 길이가 항상 3인 연속 구간 중 합이 가장 큰 것을 찾는다고 하자. 처음 세 숫자의 합을 계산한 뒤 구간을 오른쪽으로 한 칸 옮길 때, 이전 구간의 맨 왼쪽 숫자 하나를 빼고 새로 들어온 오른쪽 숫자 하나를 더하면 돼.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>int k = 3;
+int windowSum = 0;
+for (int i = 0; i &lt; k; i++) {
+    windowSum += arr[i];
+}
+int maxSum = windowSum;
+
+for (int right = k; right &lt; arr.length; right++) {
+    windowSum += arr[right];       // 새로 들어온 값
+    windowSum -= arr[right - k];   // 창문에서 빠진 값
+    maxSum = Math.max(maxSum, windowSum);
+}</code></pre></div><p>처음부터 매번 세 숫자를 다시 더하면 같은 덧셈을 반복해. 이 방식은 창문이 움직일 때 값 2개만 반영하므로 각 원소를 대체로 한 번씩 처리해 O(n)에 해결할 수 있어. 단, 배열 길이가 k보다 작은 경우에는 초기 구간을 만들 수 없으니 입력 조건을 확인해야 해.</p></article><article class="card "><h3>투 포인터를 써도 되는지 확인하는 질문</h3><ul class="bullets "><li>문제가 연속된 구간이나 정렬된 배열의 두 위치를 다루는가?</li><li>포인터를 한 방향으로만 움직여도 답을 놓치지 않는 이유가 있는가?</li><li>합 조건에서 원소가 양수인가? 음수가 섞이면 단조성이 깨질 수 있다.</li><li>고정 길이 구간인가, 조건에 따라 길이가 바뀌는 구간인가?</li><li>구간이 이동할 때 빠지는 값과 새로 들어오는 값을 정확히 구분했는가?</li></ul></article><details class="check"><summary>직접 생각해 보기: 배열에 음수가 포함되어 있어도 “합이 target보다 크면 왼쪽을 줄인다”는 규칙을 항상 사용해도 될까?</summary><div class="answer"><b>답</b><p>아니. 음수가 있으면 합의 크기가 한 방향으로만 변한다는 보장이 없어서 이 규칙이 깨질 수 있어.</p><b>왜?</b><p>투 포인터는 포인터를 이동하면 어떤 조건이 개선되는지 보장되어야 한다. 음수는 더했는데 합이 작아질 수도 있어서 단순 슬라이딩 윈도우 논리가 성립하지 않을 수 있다.</p></div></details><div class="problem-grid"><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/178870" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.2</span><b>연속된 부분 수열의 합</b><span>투 포인터 · 가변 구간</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/67258" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.3</span><b>보석 쇼핑</b><span>슬라이딩 윈도우 + 해시</span><small>문제 열기 ↗</small></a></div></div>
+    </section><section class="panel" id="p5" data-title="HashMap과 TreeSet">
+      <header class="pagehead"><span class="badge" style="background:#F472B620;color:#F472B6">HASH</span><div><p class="eyebrow">Section 5 · 5강</p><h1>HashMap과 TreeSet</h1><p class="description">빈도 세기, 존재 여부, 정렬된 집합을 문제 조건과 연결한다.</p></div></header>
+      <div class="content"><article class="card feature"><h3>HashMap은 “이름표가 붙은 보관함”</h3><p>배열은 0, 1, 2처럼 번호로 값을 찾지만, HashMap은 키(key)로 값(value)을 찾는 자료구조야. 예를 들어 이름을 키로 하고 점수를 값으로 저장할 수 있어. <code>"철수" → 90</code> 같은 관계를 기억하기 쉽지.</p><p>코테에서는 “각 숫자가 몇 번 나왔지?”, “이 이름이 이미 있었지?”, “이 단어의 개수는?” 같은 문제에 자주 사용해. 평균적으로 삽입·조회가 빠르지만, 순서를 자동으로 정렬해 주지는 않아.</p></article><article class="card "><h3>패턴 1 — getOrDefault로 등장 횟수 세기</h3><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>String[] names = {&quot;kim&quot;, &quot;lee&quot;, &quot;kim&quot;, &quot;park&quot;, &quot;kim&quot;};
+Map&lt;String, Integer&gt; count = new HashMap&lt;&gt;();
+
+for (String name : names) {
+    count.put(name, count.getOrDefault(name, 0) + 1);
+}
+// kim=3, lee=1, park=1</code></pre></div><p><code>getOrDefault(name, 0)</code>는 name이 이미 있으면 저장된 숫자를 가져오고, 없으면 0을 가져와. 거기에 1을 더해서 다시 저장해. 첫 등장한 kim은 0+1=1, 두 번째 kim은 1+1=2가 되는 식이야.</p></article><article class="card "><h3>패턴 2 — 두 배열 또는 두 그룹 비교</h3><p>“참가자 목록에는 있는데 완주자 목록에는 없는 사람”처럼 두 목록의 차이를 찾는다고 해 보자. 참가자를 한 명씩 지울 수 있도록 빈도를 세어 두면, 중복 이름이 있어도 처리할 수 있어.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>Map&lt;String, Integer&gt; count = new HashMap&lt;&gt;();
+for (String name : participants) {
+    count.put(name, count.getOrDefault(name, 0) + 1);
+}
+
+for (String name : finishers) {
+    count.put(name, count.get(name) - 1);
+}
+
+for (Map.Entry&lt;String, Integer&gt; entry : count.entrySet()) {
+    if (entry.getValue() &gt; 0) {
+        System.out.println(entry.getKey());
+    }
+}</code></pre></div><p>완주한 이름이 나올 때마다 개수를 하나 줄여. 마지막에 0보다 큰 수가 남으면 참가자 목록에 더 많이 있었다는 뜻이야. 이 방식은 같은 이름이 여러 번 나오는 경우에도 “몇 명”인지 계산한다. 다만 입력에 없는 키를 <code>get(name)</code>으로 바로 가져오면 null이 될 수 있으므로, 이 예제는 모든 finisher가 participants에 있다고 가정해.</p></article><article class="card "><h3>TreeSet과 TreeMap: 자동으로 정렬해 주는 도구</h3><p><code>HashSet</code>은 중복을 제거하지만 정렬 순서를 약속하지 않아. <code>TreeSet</code>은 중복을 제거하면서 정렬된 순서를 유지해. “현재 숫자보다 작거나 같은 값 중 가장 큰 수”처럼 가까운 값을 찾아야 할 때 유용해.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>TreeSet&lt;Integer&gt; set = new TreeSet&lt;&gt;();
+set.add(10);
+set.add(3);
+set.add(7);
+set.add(7); // 중복은 한 번만 저장
+
+System.out.println(set);          // [3, 7, 10]
+System.out.println(set.floor(8));  // 7: 8 이하에서 가장 큰 값
+System.out.println(set.ceiling(8));// 10: 8 이상에서 가장 작은 값</code></pre></div><p><code>floor(x)</code>는 x 이하에서 가장 큰 값, <code>ceiling(x)</code>는 x 이상에서 가장 작은 값을 의미해. 조건을 만족하는 값이 없으면 null을 반환할 수 있다는 것도 기억하자. 정렬을 유지하는 비용 때문에 보통 HashSet보다 삽입·조회가 느리지만, “정렬된 상태”가 필요할 때 사용해.</p></article><article class="card "><h3>어떤 자료구조를 고르면 될까?</h3><div class="mini-table"><div><b>배열</b><span>위치 번호로 빠르게 접근</span><em>i번째 원소, 고정된 범위</em></div><div><b>HashMap</b><span>키에 대응하는 값 저장</span><em>빈도수, 존재 횟수, 매핑</em></div><div><b>HashSet</b><span>중복 없이 존재 여부 관리</span><em>이미 봤는지 확인</em></div><div><b>TreeSet</b><span>중복 제거 + 정렬 유지</span><em>이하 최댓값·이상 최솟값</em></div><div><b>TreeMap</b><span>키 기준 정렬된 key-value</span><em>정렬된 범위별 집계</em></div></div></article><article class="card "><h3>이 단원에서 외울 코드 뼈대</h3><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>// 빈도수 증가
+map.put(key, map.getOrDefault(key, 0) + 1);
+
+// 키가 있는지 확인
+if (map.containsKey(key)) {
+    // 이미 존재한다
+}
+
+// 모든 키와 값을 순회
+for (Map.Entry&lt;String, Integer&gt; entry : map.entrySet()) {
+    String key = entry.getKey();
+    int value = entry.getValue();
+}</code></pre></div></article><details class="check"><summary>직접 생각해 보기: 같은 이름이 여러 번 나올 수 있을 때 “등장 횟수”를 세려면 어떤 자료구조가 가장 자연스러울까?</summary><div class="answer"><b>답</b><p>HashMap을 사용해 이름을 키로, 등장 횟수를 값으로 저장한다.</p><b>왜?</b><p>Set은 존재 여부와 중복 제거에는 좋지만 각 이름이 몇 번 나왔는지를 그대로 저장하지 않는다. HashMap은 키와 숫자를 연결할 수 있다.</p></div></details><div class="problem-grid"><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/42576" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.1</span><b>완주하지 못한 선수</b><span>빈도 카운팅</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/42577" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.2</span><b>전화번호 목록</b><span>접두사 검색</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/42578" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.2</span><b>위장</b><span>조합과 해시</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/42579" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.3</span><b>베스트앨범</b><span>그룹 집계 + 정렬</span><small>문제 열기 ↗</small></a></div></div>
+    </section><section class="panel" id="p6" data-title="스택과 큐">
+      <header class="pagehead"><span class="badge" style="background:#FBBF2420;color:#FBBF24">STACK</span><div><p class="eyebrow">Section 6 · 8강</p><h1>스택과 큐</h1><p class="description">스택·큐·우선순위 큐의 차이를 일상적인 예와 Java API로 익힌다.</p></div></header>
+      <div class="content"><article class="card feature"><h3>스택과 큐는 줄 서는 방식이 다르다</h3><p><b>스택(Stack)</b>은 접시를 쌓는 것과 같아. 마지막에 올린 접시를 가장 먼저 꺼내. 이것을 LIFO(Last In, First Out)라고 해. 괄호 짝 맞추기, 되돌아가기, 최근 상태부터 처리하기 등에 쓴다.</p><p><b>큐(Queue)</b>는 줄 서기와 같아. 먼저 들어온 사람을 먼저 처리해. 이것을 FIFO(First In, First Out)라고 해. BFS처럼 가까운 순서대로 탐색할 때 사용해.</p><p>Java에서는 예전 <code>Stack</code> 클래스 대신, 스택과 큐 모두에 활용할 수 있는 <code>ArrayDeque</code>를 기본 선택지로 기억해 두면 좋아.</p></article><article class="card "><h3>스택 기본 API</h3><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>Deque&lt;Integer&gt; stack = new ArrayDeque&lt;&gt;();
+stack.push(10);   // 맨 위에 넣기
+stack.push(20);
+int top = stack.peek(); // 20을 확인하지만 제거하지 않음
+int value = stack.pop(); // 20을 꺼내고 제거
+boolean empty = stack.isEmpty();</code></pre></div><p><code>push</code>는 넣기, <code>peek</code>은 확인만 하기, <code>pop</code>은 꺼내면서 제거하기야. 비어 있는 스택에서 <code>pop()</code>하면 예외가 발생하므로 <code>isEmpty()</code>를 확인하는 습관을 들이자.</p></article><article class="card "><h3>대표 문제 — 괄호가 올바른지 확인하기</h3><p>문자열 <code>"(())"</code>는 괄호가 올바르고, <code>"())("</code>는 올바르지 않아. 여는 괄호를 만날 때마다 저장하고, 닫는 괄호가 나오면 직전에 열린 괄호를 하나 없애면 돼. 닫을 것이 없는데 닫는 괄호가 나오면 그 즉시 실패야.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>boolean isValid(String s) {
+    Deque&lt;Character&gt; stack = new ArrayDeque&lt;&gt;();
+
+    for (char c : s.toCharArray()) {
+        if (c == &#x27;(&#x27;) {
+            stack.push(c);
+        } else { // 입력이 &#x27;(&#x27;와 &#x27;)&#x27;만으로 이루어졌다고 가정
+            if (stack.isEmpty()) {
+                return false; // 짝지을 여는 괄호가 없음
+            }
+            stack.pop();
+        }
+    }
+    return stack.isEmpty(); // 여는 괄호가 남지 않아야 성공
+}</code></pre></div><p>끝에서 스택이 비어 있지 않다면 여는 괄호가 남아 있다는 뜻이야. 이 코드는 입력에 소괄호 두 종류만 있다고 가정해. 여러 종류의 괄호가 섞인 문제에서는 여는 괄호의 종류도 저장해서 짝이 맞는지 비교해야 해.</p></article><article class="card "><h3>큐 기본 API와 BFS 준비</h3><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>Queue&lt;Integer&gt; queue = new ArrayDeque&lt;&gt;();
+queue.offer(10); // 뒤에 넣기
+queue.offer(20);
+int first = queue.peek(); // 맨 앞 확인: 10
+int removed = queue.poll(); // 맨 앞에서 꺼내기: 10
+boolean empty = queue.isEmpty();</code></pre></div><p><code>offer</code>는 큐에 넣기, <code>poll</code>은 맨 앞에서 꺼내기, <code>peek</code>은 맨 앞 확인이야. 비어 있는 큐에서 <code>poll()</code>과 <code>peek()</code>은 null을 반환할 수 있어. 숫자 0과 “값이 없음”을 구분해야 하는 문제에서는 반환값 처리에 신경 써.</p></article><article class="card "><h3>우선순위 큐는 “먼저 온 순서”가 아니다</h3><p><code>PriorityQueue</code>는 넣은 순서대로 꺼내는 자료구조가 아니야. 기본 설정에서는 가장 작은 값이 먼저 나와. 매번 가장 작은 비용, 가장 낮은 점수, 가장 가까운 후보를 골라야 할 때 사용해.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>PriorityQueue&lt;Integer&gt; minHeap = new PriorityQueue&lt;&gt;();
+minHeap.offer(7);
+minHeap.offer(2);
+minHeap.offer(5);
+System.out.println(minHeap.poll()); // 2
+
+PriorityQueue&lt;Integer&gt; maxHeap =
+        new PriorityQueue&lt;&gt;(Comparator.reverseOrder());
+maxHeap.offer(7);
+maxHeap.offer(2);
+maxHeap.offer(5);
+System.out.println(maxHeap.poll()); // 7</code></pre></div><p>우선순위 큐는 스택이나 일반 큐와 목적이 달라. 최솟값/최댓값을 반복해서 꺼내야 할 때 사용하고, 모든 원소가 항상 정렬된 리스트처럼 보장되는 것은 아니야.</p></article><article class="card "><h3>문제에서 어떤 구조인지 알아보는 단서</h3><ul class="bullets "><li>“가장 최근의”, “되돌리기”, “괄호 짝” → 스택을 의심한다.</li><li>“먼저 들어온 순서”, “레벨 순서”, “최단 거리” → 큐를 의심한다.</li><li>“매번 가장 작은/큰 값부터 선택” → 우선순위 큐를 의심한다.</li><li>비어 있는 자료구조에서 꺼내는 경우가 생길 수 있는지 검사한다.</li></ul></article><details class="check"><summary>직접 생각해 보기: BFS에서 다음 탐색 대상을 넣고 순서대로 꺼내는 데 가장 기본적으로 쓰는 자료구조는?</summary><div class="answer"><b>답</b><p>Queue(큐)다.</p><b>왜?</b><p>큐는 먼저 들어온 항목을 먼저 꺼내므로 현재 거리 순서대로 탐색을 진행할 수 있다.</p></div></details><div class="problem-grid"><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/12909" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.2</span><b>올바른 괄호</b><span>스택 · 짝 맞추기</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/42586" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.2</span><b>기능개발</b><span>큐 시뮬레이션</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/42583" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.2</span><b>다리를 지나는 트럭</b><span>큐 시뮬레이션</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/42587" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.2</span><b>프로세스</b><span>우선순위 큐</span><small>문제 열기 ↗</small></a></div></div>
+    </section><section class="panel" id="p7" data-title="정렬과 이분 탐색">
+      <header class="pagehead"><span class="badge" style="background:#FBBF2420;color:#FBBF24">SEARCH</span><div><p class="eyebrow">Section 7 · 10강</p><h1>정렬과 이분 탐색</h1><p class="description">정렬 기준을 만드는 법과 범위를 절반씩 줄이는 논리를 익힌다.</p></div></header>
+      <div class="content"><article class="card feature"><h3>정렬은 순서를 만드는 것, 이분 탐색은 절반씩 버리는 것</h3><p>정렬은 데이터를 작은 순서나 큰 순서로 배열하는 거야. 정렬하면 “가장 작은 값”, “서로 가까운 값”, “특정 조건의 앞뒤 순서”를 다루기 쉬워져.</p><p>이분 탐색은 <b>이미 정렬된 데이터</b>에서 가운데 값을 보고, 찾는 값이 가운데보다 작은지 큰지에 따라 절반을 버리는 방법이야. 정렬되지 않은 배열에서는 가운데를 보고 어느 쪽에 답이 있는지 알 수 없기 때문에 사용할 수 없어.</p></article><article class="card "><h3>Comparator: 정렬 기준을 직접 말해 주기</h3><p>객체나 2차원 배열은 어떤 기준으로 정렬할지 지정해야 할 때가 있어. 회의가 끝나는 시간이 빠른 순서로 정렬하고, 끝나는 시간이 같으면 시작 시간이 빠른 순서로 정렬한다고 해 보자.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>int[][] meetings = {
+    {3, 5}, {1, 4}, {4, 4}, {2, 3}
+};
+
+Arrays.sort(meetings, (a, b) -&gt; {
+    int byEnd = Integer.compare(a[1], b[1]);
+    if (byEnd != 0) return byEnd;
+    return Integer.compare(a[0], b[0]);
+});</code></pre></div><p><code>a[0]</code>은 시작 시간, <code>a[1]</code>은 끝나는 시간이라고 약속한 거야. 먼저 끝나는 시간을 비교하고, 둘이 같으면 시작 시간을 비교해. 비교식 <code>a[1] - b[1]</code>은 값이 아주 크면 오버플로 위험이 있을 수 있으므로 <code>Integer.compare</code>가 안전한 습관이야.</p></article><article class="card "><h3>이분 탐색 — 값을 찾는 기본형</h3><p>정렬된 배열 <code>[2, 5, 8, 12, 16, 23, 38]</code>에서 16을 찾는다고 하자. 가운데를 확인하고, 목표 16이 가운데 값보다 크면 왼쪽 절반을 버려. 남은 절반에서 다시 가운데를 확인해. 매번 살펴볼 범위가 대략 절반이 되므로 빠르다.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>int binarySearch(int[] arr, int target) {
+    int left = 0;
+    int right = arr.length - 1;
+
+    while (left &lt;= right) {
+        int mid = left + (right - left) / 2;
+
+        if (arr[mid] == target) {
+            return mid;
+        } else if (arr[mid] &lt; target) {
+            left = mid + 1;  // target은 오른쪽에 있을 수 있음
+        } else {
+            right = mid - 1; // target은 왼쪽에 있을 수 있음
+        }
+    }
+    return -1; // 찾지 못함
+}</code></pre></div><p><code>left</code>와 <code>right</code>는 아직 확인할 수 있는 범위의 양 끝이야. <code>left &gt; right</code>가 되면 더 확인할 칸이 없다는 뜻이야. 중간 인덱스는 <code>left + (right-left)/2</code>로 계산하면 <code>(left+right)/2</code>보다 정수 오버플로 위험을 줄일 수 있어.</p></article><article class="card "><h3>파라메트릭 서치 — “가능한가?”를 이분 탐색하기</h3><p>이름은 어려워 보이지만 질문은 단순해. “최소 몇 분이면 모든 사람을 처리할 수 있을까?”, “길이를 얼마까지 늘려도 조건을 만족할까?”처럼 어떤 숫자를 정했을 때 가능/불가능을 판단할 수 있는 문제야. 숫자가 커질수록 무조건 가능해지거나, 숫자가 커질수록 무조건 불가능해지는 단조성이 있으면 이분 탐색을 적용할 수 있어.</p><p>예를 들어 “조건을 만족하는 최소 값”을 구하고, <code>can(x)</code>가 x에서 가능한지 알려준다고 하자. x가 커질수록 조건을 만족하기 쉬운 형태라면, 가능할 때 더 작은 값도 가능한지 왼쪽을 살펴봐.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>// 조건을 만족하는 최소 정수 찾기
+int left = minValue;
+int right = maxValue;
+int answer = -1; // 가능한 값이 없으면 -1 유지
+
+while (left &lt;= right) {
+    int mid = left + (right - left) / 2;
+
+    if (can(mid)) {
+        answer = mid;       // 일단 정답 후보
+        right = mid - 1;    // 더 작은 값도 가능한지 확인
+    } else {
+        left = mid + 1;     // 너무 작아서 불가능 → 키운다
+    }
+}</code></pre></div><p>핵심은 <code>can(mid)</code>가 어떤 뜻인지, 값이 커질 때 true/false가 어떤 방향으로 바뀌는지 먼저 설명할 수 있어야 한다는 점이야. “최소 가능한 값”과 “최대 가능한 값”은 포인터 이동 방향이 반대일 수 있으므로, 이 코드의 좌우 이동을 무조건 암기해서 모든 문제에 붙이면 안 돼.</p></article><article class="card "><h3>정렬·탐색 체크리스트</h3><ul class="bullets "><li>이분 탐색 전에 데이터가 정렬되어 있는가?</li><li>정렬 기준이 여러 개라면 우선순위 순서대로 비교하는가?</li><li>가능 여부 함수가 숫자에 따라 한 방향으로만 바뀌는가?</li><li>정답을 찾았을 때 끝낼지, 더 작은/큰 후보가 있는지 확인할지 결정했는가?</li><li>배열이 비어 있거나 답이 없는 상황의 반환값을 정했는가?</li></ul></article><details class="check"><summary>직접 생각해 보기: 정렬되지 않은 배열에서 가운데 원소를 확인한 뒤 왼쪽이나 오른쪽 절반을 버려도 항상 정답을 찾을 수 있을까?</summary><div class="answer"><b>답</b><p>아니. 정렬되어 있지 않으면 답이 어느 절반에 있는지 판단할 수 없다.</p><b>왜?</b><p>이분 탐색은 값의 크기와 인덱스 순서가 일치하도록 정렬되어 있다는 전제가 필요하다.</p></div></details><div class="problem-grid"><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/42746" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.2</span><b>가장 큰 수</b><span>문자열 기준 정렬</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/42747" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.2</span><b>H-Index</b><span>정렬과 조건</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/43238" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.3</span><b>입국심사</b><span>파라메트릭 서치</span><small>문제 열기 ↗</small></a></div></div>
+    </section><section class="panel" id="p8" data-title="재귀와 DFS">
+      <header class="pagehead"><span class="badge" style="background:#1FD4A220;color:#1FD4A2">DFS</span><div><p class="eyebrow">Section 8 · 14강</p><h1>재귀와 DFS</h1><p class="description">그래프를 연결 목록으로 표현하고, 방문한 점을 표시하며 깊게 탐색한다.</p></div></header>
+      <div class="content"><article class="card feature"><h3>그래프는 “점과 선으로 연결된 관계”</h3><p>지도 속 장소와 길, 사람과 친구 관계, 웹페이지와 링크를 점과 선으로 표현할 수 있어. 점을 <b>정점(vertex)</b>, 연결선을 <b>간선(edge)</b>이라고 불러. “A와 B가 연결되어 있나?”, “연결된 곳은 모두 몇 개나 있나?” 같은 문제를 그래프로 표현할 수 있어.</p><p>그래프를 코드로 표현하는 쉬운 방법은 각 점마다 “나와 연결된 점 목록”을 저장하는 <b>인접 리스트</b>야. 정점이 적고 간선이 일부만 있는 문제에서는 보통 인접 행렬보다 메모리를 덜 사용한다.</p></article><article class="card "><h3>인접 리스트를 만드는 방법</h3><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>int n = 5;
+List&lt;List&lt;Integer&gt;&gt; graph = new ArrayList&lt;&gt;();
+for (int i = 0; i &lt; n; i++) {
+    graph.add(new ArrayList&lt;&gt;());
+}
+
+// 0과 1이 연결된 무방향 그래프
+graph.get(0).add(1);
+graph.get(1).add(0);
+
+// 0번 정점과 연결된 정점 확인
+for (int next : graph.get(0)) {
+    System.out.println(next);
+}</code></pre></div><p>무방향 그래프는 A와 B가 연결되면 A의 목록에도 B를, B의 목록에도 A를 추가해. 단방향 그래프라면 문제에서 주어진 방향대로만 저장해야 해. 정점 번호가 1부터 n까지 주어지는지 0부터 n-1까지 주어지는지도 주의하자.</p></article><article class="card "><h3>DFS는 한 갈래를 깊게 들어갔다가 돌아오는 탐색</h3><p>미로에서 길을 따라 계속 가다가 막히면 직전 갈림길로 돌아오는 걸 떠올리면 돼. 이것이 DFS(깊이 우선 탐색)의 느낌이야. 재귀 함수로 작성할 수 있고, 방문한 점을 기록하는 <code>visited</code>가 필수야. 방문 체크를 하지 않으면 A→B→A→B처럼 같은 곳을 계속 돌 수 있어.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>void dfs(int current, List&lt;List&lt;Integer&gt;&gt; graph, boolean[] visited) {
+    visited[current] = true; // 이 정점은 방문했음
+
+    for (int next : graph.get(current)) {
+        if (!visited[next]) {
+            dfs(next, graph, visited);
+        }
+    }
+}</code></pre></div><p>함수를 호출할 때마다 현재 정점을 방문 처리하고, 연결된 정점 중 아직 안 간 곳으로 다시 들어가. 더 들어갈 곳이 없으면 함수가 끝나면서 이전 위치로 돌아와. 이처럼 함수가 자신을 부르는 방식을 재귀라고 해.</p><p>재귀는 편하지만 연결이 아주 깊은 그래프에서는 호출 스택이 넘쳐 <code>StackOverflowError</code>가 날 수 있어. 입력 범위가 크면 반복문과 명시적인 스택을 쓰는 방법도 고려해.</p></article><article class="card "><h3>연결 요소 개수 세기</h3><p>지도에서 서로 연결되어 있는 덩어리가 몇 개인지 세는 문제를 생각해 보자. 전체 정점을 0부터 확인하면서 아직 방문하지 않은 정점을 만나면 새로운 덩어리의 시작이야. 그 정점에서 DFS를 실행해 연결된 곳을 모두 방문하고, 덩어리 수를 1 늘려.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>int components = 0;
+boolean[] visited = new boolean[n];
+
+for (int i = 0; i &lt; n; i++) {
+    if (!visited[i]) {
+        components++;
+        dfs(i, graph, visited);
+    }
+}</code></pre></div><p>이 코드는 모든 정점을 최소 한 번 확인해. 이미 방문한 정점은 같은 연결 덩어리에 포함되므로 새 DFS를 시작하지 않아. 첫 정점을 0으로 쓸지 1로 쓸지에 맞춰 배열의 크기와 반복 범위를 맞춰야 한다.</p></article><article class="card "><h3>재귀를 읽을 때 종이에 쓸 세 가지</h3><ul class="bullets "><li><b>종료 조건:</b> 언제 함수가 더 이상 자신을 호출하지 않는가?</li><li><b>현재 상태:</b> 지금 함수가 처리하는 정점 또는 선택은 무엇인가?</li><li><b>다음 호출:</b> 어떤 조건일 때 다음 정점으로 들어가는가?</li></ul></article><details class="check"><summary>직접 생각해 보기: DFS에서 visited 처리를 하지 않으면 연결된 두 정점 사이를 계속 오갈 수 있을까?</summary><div class="answer"><b>답</b><p>그럴 수 있어. 방문 처리를 해야 이미 본 정점으로 다시 들어가는 것을 막는다.</p><b>왜?</b><p>무방향 그래프는 A에서 B로 갈 수 있으면 B에서도 A로 갈 수 있다. 방문 처리가 없다면 재귀가 반복될 수 있다.</p></div></details><div class="problem-grid"><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/43165" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.2</span><b>타겟 넘버</b><span>재귀 · 경우의 수</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/43162" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.3</span><b>네트워크</b><span>연결 요소</span><small>문제 열기 ↗</small></a></div></div>
+    </section><section class="panel" id="p9" data-title="BFS와 최단거리">
+      <header class="pagehead"><span class="badge" style="background:#1FD4A220;color:#1FD4A2">BFS</span><div><p class="eyebrow">Section 9 · 16강</p><h1>BFS와 최단거리</h1><p class="description">큐를 활용해 가까운 상태부터 방문하고, 거리 정보를 갱신한다.</p></div></header>
+      <div class="content"><article class="card feature"><h3>BFS는 “가까운 곳부터 층층이” 탐색하기</h3><p>출발점에서 한 번에 갈 수 있는 곳을 먼저 보고, 그 다음 두 번 이동해야 갈 수 있는 곳을 보는 방식이 BFS(너비 우선 탐색)야. 사람이 여러 갈림길로 퍼지는 그림을 떠올리면 돼. 이동 비용이 모두 1인 그래프라면 BFS가 도착점까지의 최단 이동 횟수를 구할 수 있어.</p><p>DFS는 한 갈래를 깊게 들어가고, BFS는 가까운 곳부터 넓게 퍼져. 그래서 목적에 따라 선택해. 최단거리 문제라고 무조건 BFS인 것은 아니고, 간선마다 이동 비용이 다르면 다익스트라 같은 다른 알고리즘이 필요할 수 있어.</p></article><article class="card "><h3>BFS 기본 템플릿</h3><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>int[] distance = new int[n];
+Arrays.fill(distance, -1); // -1은 아직 방문하지 않았다는 표시
+Queue&lt;Integer&gt; queue = new ArrayDeque&lt;&gt;();
+
+int start = 0;
+distance[start] = 0;
+queue.offer(start);
+
+while (!queue.isEmpty()) {
+    int current = queue.poll();
+
+    for (int next : graph.get(current)) {
+        if (distance[next] != -1) continue; // 이미 방문함
+
+        distance[next] = distance[current] + 1;
+        queue.offer(next);
+    }
+}</code></pre></div><p>큐에 넣을 때 방문 처리를 해. 여기서는 distance를 -1에서 0 이상으로 바꾸는 것이 방문 표시 역할을 해. 새 정점의 거리는 현재 정점의 거리 + 1이야. 모든 간선의 비용이 1이므로, 큐에서 먼저 발견한 경로가 가장 적은 이동 횟수를 갖는다.</p><p><code>distance</code>를 0으로 초기화하고 별도 visited 없이 쓰면 출발점의 거리 0과 미방문 상태가 구분되지 않아. 그래서 -1 같은 “방문하지 않음” 값을 쓰거나 별도 visited 배열을 쓴다.</p></article><article class="card "><h3>2차원 격자에서 BFS</h3><p>미로에서 시작 칸부터 도착 칸까지 최소 몇 번 움직여야 하는지 구할 때 쓴다. 큐에는 현재 칸의 행·열을 넣고, 상하좌우로 움직인다. 새 칸이 격자 밖이거나 벽이거나 이미 방문한 곳이면 건너뛴다.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>int rows = board.length;
+int cols = board[0].length;
+int[][] dist = new int[rows][cols];
+for (int[] row : dist) Arrays.fill(row, -1);
+
+int[] dx = {-1, 1, 0, 0};
+int[] dy = {0, 0, -1, 1};
+Queue&lt;int[]&gt; q = new ArrayDeque&lt;&gt;();
+q.offer(new int[]{startX, startY});
+dist[startX][startY] = 0;
+
+while (!q.isEmpty()) {
+    int[] cur = q.poll();
+    int x = cur[0], y = cur[1];
+
+    for (int d = 0; d &lt; 4; d++) {
+        int nx = x + dx[d];
+        int ny = y + dy[d];
+        if (nx &lt; 0 || nx &gt;= rows || ny &lt; 0 || ny &gt;= cols) continue;
+        if (board[nx][ny] == 0) continue; // 예: 0은 벽이라고 가정
+        if (dist[nx][ny] != -1) continue;
+
+        dist[nx][ny] = dist[x][y] + 1;
+        q.offer(new int[]{nx, ny});
+    }
+}</code></pre></div><p>이 예제는 board에서 0이 벽이고 1이 이동 가능한 칸이라고 가정했어. 실제 문제의 벽/길 표현에 맞게 조건을 바꿔야 해. <code>dist</code>에는 시작점이 0, 한 번 움직인 칸은 1, 두 번 움직인 칸은 2가 저장된다. 문제에서 시작 칸도 이동 횟수에 포함하는 식으로 정의하면 결과에 1을 더하는 등 답의 정의에 맞게 조정해야 해.</p></article><article class="card "><h3>방문 처리를 큐에서 꺼낼 때 하면 안 될까?</h3><p>보통은 큐에 넣는 순간 방문 처리를 해야 해. 만약 큐에서 꺼낼 때까지 방문 표시를 하지 않으면, 같은 정점으로 가는 서로 다른 경로가 여러 개 있을 때 그 정점이 큐에 여러 번 들어갈 수 있어. 그러면 불필요한 작업이 늘고 거리 갱신도 헷갈리기 쉬워져.</p><p>외울 문장: <b>“발견했을 때 거리 기록, 큐에 넣기. 큐에서 꺼낼 때는 이미 기록된 상태.”</b></p></article><article class="card "><h3>BFS 문제 풀이 순서</h3><ol class="steps"><li>정점이나 칸을 어떻게 표현할지 정한다: 숫자 하나, (행, 열), 혹은 상태 묶음.</li><li>방문 여부와 거리 정보를 저장할 배열을 준비한다.</li><li>시작점을 방문 처리하고 큐에 넣는다.</li><li>큐가 빌 때까지 하나 꺼내고, 이동 가능한 다음 위치를 확인한다.</li><li>범위 밖·벽·이미 방문한 위치는 건너뛴다.</li><li>새 위치에 거리와 방문을 기록한 뒤 큐에 넣는다.</li></ol></article><details class="check"><summary>직접 생각해 보기: 모든 이동 비용이 1인 그래프에서 시작점으로부터 최소 이동 횟수를 구할 때 기본적으로 사용하는 탐색은?</summary><div class="answer"><b>답</b><p>BFS(너비 우선 탐색)다.</p><b>왜?</b><p>BFS는 가까운 거리의 정점을 먼저 방문하므로 모든 간선 비용이 1인 그래프에서 최초로 도달한 거리가 최단 이동 횟수다.</p></div></details><div class="problem-grid"><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/1844" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.2</span><b>게임 맵 최단거리</b><span>격자 최단거리</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/43163" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.3</span><b>단어 변환</b><span>단계별 탐색</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/43164" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.3</span><b>여행경로</b><span>경로 탐색 · 조건</span><small>문제 열기 ↗</small></a></div></div>
+    </section><section class="panel" id="p10" data-title="그리디 알고리즘">
+      <header class="pagehead"><span class="badge" style="background:#A78BFA20;color:#A78BFA">GREEDY</span><div><p class="eyebrow">Section 10 · 9강</p><h1>그리디 알고리즘</h1><p class="description">매 순간의 선택이 전체 답으로 이어지는 이유를 문제 조건에서 확인한다.</p></div></header>
+      <div class="content"><article class="card feature"><h3>그리디는 매 순간 좋은 선택을 하는 방법</h3><p>그리디(Greedy)는 지금 단계에서 가장 좋아 보이는 선택을 하고 다음 단계로 넘어가는 알고리즘이야. 예를 들어 여러 회의를 최대한 많이 잡고 싶다면, 가장 빨리 끝나는 회의를 먼저 선택하는 방법을 생각할 수 있어. 빨리 끝나면 남은 시간에 다른 회의를 더 잡을 수 있기 때문이지.</p><p>하지만 <b>지금 좋아 보이는 선택이 전체 정답을 보장하는 건 아니야.</b> 그리디는 문제에 맞는 선택 기준이 있고, 그 기준이 전체 최적해를 놓치지 않는다는 이유가 있어야 해. “그냥 큰 것부터 고르면 될 것 같아서”는 증명이 아니야.</p></article><article class="card "><h3>대표 패턴 — 회의실을 최대한 많이 배정하기</h3><p>각 회의는 시작 시간과 종료 시간이 있어. 한 회의가 끝난 뒤에 다음 회의를 시작할 수 있다고 하자. 회의를 최대한 많이 선택하려면 끝나는 시간이 빠른 회의부터 고려하는 전략을 쓸 수 있어. 끝나는 회의를 빨리 마쳐야 나머지 시간을 많이 남기기 때문이야.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>Arrays.sort(meetings, (a, b) -&gt; {
+    int byEnd = Integer.compare(a[1], b[1]);
+    if (byEnd != 0) return byEnd;
+    return Integer.compare(a[0], b[0]);
+});
+
+int count = 0;
+int endTime = 0; // 회의 시작 시간이 0 이상인 문제라고 가정
+for (int[] meeting : meetings) {
+    int start = meeting[0];
+    int end = meeting[1];
+
+    if (start &gt;= endTime) {
+        count++;
+        endTime = end;
+    }
+}</code></pre></div><p>정렬이 핵심 첫 단계야. 회의가 끝나는 시간이 빠른 순서로 오도록 만든 뒤, 현재까지 선택한 회의가 끝나기 전 시작하는 회의는 건너뛰어. 시작 시간이 <code>endTime</code>과 같으면 직전 회의가 끝나는 순간 바로 시작할 수 있어. 이 예제는 시작 시간이 0 이상이라 초기 endTime을 0으로 두었어. 음수 시간도 가능한 문제라면 초기값을 별도로 처리해야 해.</p></article><article class="card "><h3>동전 거스름돈은 그리디가 항상 맞을까?</h3><p>한국의 일반적인 500원·100원·50원·10원처럼 큰 단위가 작은 단위의 배수로 이어지는 동전 체계에서는 큰 동전부터 쓰는 그리디가 맞는 경우가 많아. 하지만 어떤 동전 체계든 무조건 맞는 것은 아니야.</p><p>예를 들어 동전이 1원, 3원, 4원이고 6원을 만들 때 큰 동전부터 고르면 4+1+1로 3개가 필요하지만, 3+3이면 2개면 돼. 즉, <b>그리디의 성공 여부는 문제의 구조에 달려 있어.</b></p></article><article class="card "><h3>그리디인지 판단하는 질문</h3><ul class="bullets "><li>지금 가장 좋은 선택을 해도 나중에 더 나은 답을 막지 않는가?</li><li>선택 기준을 정렬로 표현할 수 있는가?</li><li>작은 반례를 직접 만들어 내 선택 기준이 실패하지 않는지 확인했는가?</li><li>문제의 입력 조건이 이 전략이 성립하는 전제를 만족하는가?</li></ul></article><article class="card feature"><h3>처음엔 이렇게 설명하는 연습을 하자</h3><p>“끝나는 시간이 빠른 회의를 먼저 선택한다. 왜냐하면 선택한 회의가 일찍 끝날수록 뒤에 선택할 수 있는 시간이 더 많이 남기 때문이다. 그 다음에는 이미 선택한 회의의 종료 시각 이후에 시작하는 회의 중, 끝나는 시간이 가장 빠른 회의를 선택한다.”</p><p>이 정도로 선택 기준과 이유를 문장으로 말할 수 있으면, 단순히 코드를 외우는 것보다 훨씬 튼튼해져.</p></article><details class="check"><summary>직접 생각해 보기: 동전 종류가 임의로 주어져도 큰 동전부터 선택하는 전략이 항상 최소 개수의 동전을 보장할까?</summary><div class="answer"><b>답</b><p>아니. 동전 체계에 따라 그리디가 틀릴 수 있다.</p><b>왜?</b><p>1·3·4원 동전으로 6원을 만들 때 4+1+1은 3개지만 3+3은 2개다. 큰 단위부터 선택하는 규칙이 항상 전체 최적해를 보장하지는 않는다.</p></div></details><div class="problem-grid"><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/42862" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.1</span><b>체육복</b><span>조건에 따른 선택</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/42885" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.2</span><b>구명보트</b><span>정렬 + 투 포인터</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/42883" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.2</span><b>큰 수 만들기</b><span>스택 + 그리디</span><small>문제 열기 ↗</small></a></div></div>
+    </section><section class="panel" id="p11" data-title="동적 프로그래밍과 점화식">
+      <header class="pagehead"><span class="badge" style="background:#A78BFA20;color:#A78BFA">DP</span><div><p class="eyebrow">Section 11 · 8강</p><h1>동적 프로그래밍과 점화식</h1><p class="description">점화식은 공식을 암기하는 과목이 아니라, 현재 답을 이전의 작은 답으로 설명하는 연습이다.</p></div></header>
+      <div class="content"><article class="card feature"><h3>DP를 어려운 수학이라고 생각하지 말기</h3><p>DP(동적 프로그래밍)는 이름 때문에 어렵게 느껴지지만, 시작은 이 질문 하나야.</p><p class="big-quote">“내가 구하려는 큰 답을, 이미 구할 수 있는 작은 답으로 만들 수 있을까?”</p><p>예를 들어 1칸 또는 2칸씩 올라갈 수 있는 계단이 있어. 5번째 칸에 도착하는 방법 수를 구하고 싶어. 5번째 칸에 마지막으로 오려면 4번째 칸에서 한 칸 올라왔거나, 3번째 칸에서 두 칸 올라왔어야 해. 그러면 5번째 칸의 방법 수는 4번째 칸의 방법 수 + 3번째 칸의 방법 수가 돼. 이게 점화식의 시작이야.</p></article><article class="card "><h3>먼저 단어부터 번역하자</h3><div class="mini-table"><div><b>상태</b><span>무엇을 계산해 저장할지</span><em>예: i번째 칸에 도착하는 방법 수</em></div><div><b>dp[i]</b><span>i라는 상황의 답을 저장한 칸</span><em>예: dp[5]는 5번째 칸의 방법 수</em></div><div><b>점화식</b><span>현재 답과 이전 답의 관계</span><em>예: dp[i] = dp[i-1] + dp[i-2]</em></div><div><b>초기값</b><span>처음에 알고 있는 답</span><em>예: dp[1]=1, dp[2]=2</em></div><div><b>기저 조건</b><span>더 작은 문제로 쪼개지 않아도 되는 경계</span><em>예: 1칸과 2칸의 경우 수</em></div></div><p><b>점화식</b>이라는 말은 그냥 “앞의 값으로 현재 값을 만드는 규칙”이라고 이해하면 돼. 고급 수학 기호부터 시작하지 않아도 된다.</p></article><article class="card "><h3>점화식을 세우는 5단계 — 이 순서대로만 해보기</h3><ol class="steps"><li><b>1. dp[i]가 무슨 뜻인지 문장으로 정한다.</b> “dp[i]는 i번째 칸까지 도착하는 방법 수”처럼 쓴다. 의미를 정하지 않고 식부터 쓰면 거의 반드시 헷갈린다.</li><li><b>2. 마지막 순간을 상상한다.</b> i번째 칸에 도착하기 바로 전에는 어디에 있었을까? 한 칸 전 또는 두 칸 전일 수 있다.</li><li><b>3. 마지막 선택별 경우를 나눈다.</b> i-1에서 한 칸 올라오는 경우와 i-2에서 두 칸 올라오는 경우를 나눈다.</li><li><b>4. 서로 겹치지 않고 모든 경우를 포함하는지 확인한다.</b> 두 경우는 마지막 이동이 다르므로 한 방법을 두 번 세지 않고, 가능한 마지막 이동을 빠짐없이 포함한다.</li><li><b>5. 작은 값으로 직접 계산하고 초기값을 정한다.</b> 1칸, 2칸, 3칸 답을 손으로 구한 뒤 식이 맞는지 검산한다.</li></ol></article><article class="card "><h3>완전히 숫자로 따라가기: 1칸 또는 2칸씩 올라가기</h3><p>계단 1칸부터 n칸까지 올라간다고 하자. 한 번에 1칸 또는 2칸만 올라갈 수 있어. 순서가 다른 이동 방법은 서로 다른 방법이야. 예를 들어 3칸을 올라가는 방법은 다음 두 가지 마지막 이동으로 분류돼.</p><ul class="bullets"><li>마지막에 1칸 올라왔다면, 직전에 2번째 칸에 있었어. 그 방법 수는 dp[2].</li><li>마지막에 2칸 올라왔다면, 직전에 1번째 칸에 있었어. 그 방법 수는 dp[1].</li></ul><p>마지막 이동은 반드시 1칸 또는 2칸이야. 그래서 두 경우를 더하면 전체 방법 수가 돼.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>// dp[i] = i번째 칸까지 올라가는 방법의 수
+// 한 번에 1칸 또는 2칸 이동 가능
+int[] dp = new int[n + 1];
+dp[1] = 1; // 1칸: [1] 한 가지
+if (n &gt;= 2) dp[2] = 2; // 2칸: [1+1], [2] 두 가지
+
+for (int i = 3; i &lt;= n; i++) {
+    dp[i] = dp[i - 1] + dp[i - 2];
+}</code></pre></div><div class="trace"><div><b>칸 i</b><span>계산</span><span>dp[i]</span></div><div><b>1</b><span>초기값</span><span>1</span></div><div><b>2</b><span>초기값</span><span>2</span></div><div><b>3</b><span>dp[2] + dp[1] = 2 + 1</span><span>3</span></div><div><b>4</b><span>dp[3] + dp[2] = 3 + 2</span><span>5</span></div><div><b>5</b><span>dp[4] + dp[3] = 5 + 3</span><span>8</span></div></div><p>이제 점화식이 외계어가 아니지? <code>dp[i] = dp[i-1] + dp[i-2]</code>는 i번째 칸의 답을 구하려면 이미 계산해 둔 앞의 두 답을 더하면 된다는 뜻일 뿐이야.</p></article><article class="card "><h3>DP 코드의 실행 순서를 이해하기</h3><p>왜 반복문을 작은 칸부터 계산할까? dp[5]를 계산하려면 dp[4]와 dp[3]이 필요해. 그러니까 dp[3], dp[4]가 먼저 채워져 있어야 해. 이처럼 <b>현재 값을 계산할 때 필요한 값이 먼저 계산되도록 순서를 정하는 것</b>이 중요해.</p><p>점화식만 맞아도 초기값이 틀리거나 계산 순서가 뒤집히면 결과가 틀릴 수 있어. 코드를 작성한 뒤에는 작은 n=1, n=2, n=3을 직접 대입해 보자.</p></article><article class="card "><h3>DP는 항상 “방법 수”만 구할까? 아니야. 최소·최대도 구한다</h3><p>DP는 답을 저장하는 방식이고, 저장하는 답은 문제에 따라 달라. 어떤 곳까지 가는 최소 비용을 구할 수도 있고, 선택할 수 있는 점수의 최댓값을 구할 수도 있어. 먼저 dp[i]의 뜻을 명확히 정해야 해.</p><p>예를 들어 각 칸에 비용이 있고, 시작점에서 i번째 칸까지 가는 최소 비용을 구하며 한 번에 한 칸 또는 두 칸 갈 수 있다고 해 보자. 마지막에 i에 도착하려면 i-1 또는 i-2에서 왔을 테니 두 비용 중 작은 것을 고르면 돼. 단, 현재 칸 비용도 더해야 해.</p><div class="codebox"><div class="codehead"><b>Java 예제</b><button class="copy" type="button" onclick="copyCode(this)">코드 복사</button></div><pre><code>// cost[i] = i번째 칸에 들어가는 비용
+// dp[i] = i번째 칸까지 오는 최소 비용
+// cost[i] = i번 칸에 도착할 때 내는 비용
+// dp[i] = 0번 칸에서 i번 칸까지 도착하는 최소 비용
+// 0번 칸에서 시작하며, 1칸 또는 2칸 이동할 수 있다고 가정
+int[] dp = new int[n];
+dp[0] = cost[0];
+if (n &gt;= 2) {
+    dp[1] = cost[1] + dp[0];
+}
+for (int i = 2; i &lt; n; i++) {
+    dp[i] = cost[i] + Math.min(dp[i - 1], dp[i - 2]);
+}</code></pre></div><p class="note"><b>전제:</b> 이 코드는 배열의 0번 칸에서 시작하고, 각 칸에 도착할 때 cost를 내며, 한 번에 1칸 또는 2칸 이동한다고 가정해. 실제 문제에서는 출발점 비용과 이동 규칙이 다를 수 있으니, 먼저 dp[i]의 뜻과 출발 조건을 문제에 맞춰 정해야 한다.</p></article><article class="card "><h3>DP 문제를 풀 때 써야 하는 빈칸 노트</h3><div class="worksheet"><p><b>문제 이름:</b> ______________________________</p><p><b>dp[i]의 뜻:</b> dp[i]는 _____________________________________ 이다.</p><p><b>마지막 행동/선택:</b> _____________________________________</p><p><b>이전 상태 후보:</b> _____________________________________</p><p><b>점화식:</b> dp[i] = _____________________________________</p><p><b>초기값:</b> _____________________________________</p><p><b>계산 순서:</b> _____________________________________</p><p><b>작은 입력으로 검산:</b> n=1 → ___, n=2 → ___, n=3 → ___</p></div><p>문제를 풀 때 이 빈칸을 실제로 채워 봐. 처음엔 10분 이상 걸려도 정상이다. 점화식은 타고난 수학 머리가 아니라, 현재 상태의 의미와 마지막 선택을 정리하는 훈련으로 익힌다.</p></article><article class="card "><h3>자주 나오는 DP 유형을 아주 짧게 구분하기</h3><div class="mini-table"><div><b>경우의 수</b><span>방법을 몇 가지 만들 수 있나?</span><em>서로 다른 마지막 행동의 방법 수를 더하는 일이 많다.</em></div><div><b>최솟값</b><span>가장 적은 비용/횟수는?</span><em>가능한 이전 상태 중 작은 값을 고른다.</em></div><div><b>최댓값</b><span>가장 큰 점수/이익은?</span><em>가능한 이전 상태 중 큰 값을 고른다.</em></div><div><b>두 문자열 비교</b><span>공통 부분 문자열/수열은?</span><em>두 문자열의 앞부분 길이를 상태로 정하는 DP가 자주 나온다.</em></div></div><p>이건 패턴의 방향을 잡기 위한 분류야. 모든 경우의 수가 무조건 더하기 한 번으로 끝나거나, 모든 최솟값 문제가 똑같은 식을 쓰는 것은 아니야.</p></article><article class="card "><h3>DP에서 초보자가 가장 많이 하는 실수</h3><ul class="bullets "><li><b>dp[i]의 뜻을 정의하지 않음.</b> 의미가 없으면 식을 만들 기준도 없다.</li><li><b>점화식을 외우고 문제에 무조건 적용함.</b> 예전에 본 식과 지금 문제의 상태가 같은지 확인해야 한다.</li><li><b>초기값 누락.</b> dp[0], dp[1]은 반복문이 계산하지 않으므로 직접 정해야 할 수 있다.</li><li><b>배열 인덱스 착각.</b> n칸이 0~n-1인지, 1~n으로 정의했는지 정리한다.</li><li><b>작은 값으로 검산하지 않음.</b> n=1, 2, 3에서 손으로 푼 결과와 코드 결과를 비교한다.</li><li><b>정수 범위 확인 안 함.</b> 경우의 수가 급격히 커지면 int 범위를 넘을 수 있어 long이나 나머지 연산이 필요할 수 있다.</li></ul></article><details class="check"><summary>직접 생각해 보기: dp[i]를 “i번째 칸까지 도착하는 방법의 수”라고 정했다. 마지막에 i-1에서 한 칸 오거나 i-2에서 두 칸 오는 것이 전부라면 점화식은?</summary><div class="answer"><b>답</b><p>dp[i] = dp[i - 1] + dp[i - 2]</p><b>왜?</b><p>마지막 이동이 1칸인 방법과 2칸인 방법은 서로 겹치지 않고, 가능한 마지막 이동을 모두 포함한다. 각 그룹의 방법 수를 더하면 전체 방법 수다.</p></div></details><div class="problem-grid"><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/43105" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.3</span><b>정수 삼각형</b><span>이전 행의 최대값</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/42898" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.3</span><b>등굣길</b><span>격자 경로 DP</span><small>문제 열기 ↗</small></a><a class="problem" href="https://school.programmers.co.kr/learn/courses/30/lessons/42895" target="_blank" rel="noopener noreferrer"><span class="level">Programmers Lv.3</span><b>N으로 표현</b><span>상태 조합 DP</span><small>문제 열기 ↗</small></a></div></div>
+    </section><section class="panel" id="p12" data-title="복습과 실전 학습법">
+      <header class="pagehead"><span class="badge" style="background:#1FD4A220;color:#1FD4A2">PLAN</span><div><p class="eyebrow">마지막 정리</p><h1>복습과 실전 학습법</h1><p class="description">암기는 짧은 코드 패턴을 재현하는 데 쓰고, 이해는 언제 그 패턴을 써야 하는지 판단하는 데 쓴다.</p></div></header>
+      <div class="content"><article class="card "><h3>알고리즘 이름보다 먼저 봐야 할 문제 단서</h3><div class="mini-table"><div><b>문자열</b><span>글자 치환·비교·뒤집기</span><em>charAt, StringBuilder, 빈도</em></div><div><b>정렬</b><span>순서·순위·가장 앞/뒤</span><em>Arrays.sort, Comparator</em></div><div><b>해시</b><span>중복·횟수·존재 여부</span><em>HashMap, HashSet</em></div><div><b>스택</b><span>최근 것부터 처리·괄호</span><em>push, pop, peek</em></div><div><b>큐 / BFS</b><span>가까운 순서·최단 이동</span><em>offer, poll, visited</em></div><div><b>투 포인터</b><span>연속 구간·정렬된 두 위치</span><em>left/right, 합 갱신</em></div><div><b>그리디</b><span>선택을 반복, 정렬 기준</span><em>선택 이유가 중요</em></div><div><b>DP</b><span>작은 문제 답을 반복 사용</span><em>dp 정의·점화식·초기값</em></div></div></article><article class="card feature"><h3>추천 4주 공부 로드맵</h3><div class="roadmap"><div><b>1주 차</b><strong>코테 기초 · 문자열 · 배열</strong><p>반복문을 표로 추적하고, 문자열 메서드와 배열 인덱스에 익숙해진다. 프로그래머스 Lv.1 위주로 하루 1문제를 목표로 한다.</p></div><div><b>2주 차</b><strong>해시 · 스택/큐 · 정렬/탐색</strong><p>자료구조를 문제의 단서와 연결한다. 문제를 읽고 어떤 구조를 써야 하는지 말로 설명한다.</p></div><div><b>3주 차</b><strong>투 포인터 · DFS/BFS</strong><p>작은 배열과 그래프를 그려가며 상태를 추적한다. BFS의 방문 처리와 거리 기록 순서를 외워서 재현한다.</p></div><div><b>4주 차</b><strong>그리디 · DP 기초 · 복습</strong><p>그리디는 선택 기준을 설명하고, DP는 dp 정의·점화식·초기값 노트를 쓰는 연습을 한다. 어려운 문제 수보다 복습 완료율을 본다.</p></div></div><p class="note">주당 시간이 부족하면 4주 계획을 6~8주로 늘려도 괜찮아. 중요한 건 빨리 진도를 나가는 게 아니라, 본 문제를 다시 풀 수 있게 만드는 거야.</p></article><article class="card "><h3>복습 일정: 다음 날·3일 뒤·7일 뒤·14일 뒤</h3><p>오늘 이해한 내용은 며칠 뒤 쉽게 잊어버릴 수 있어. 그때 답을 다시 읽는 것보다 <b>먼저 빈 화면에서 기억을 꺼내 본 뒤</b> 틀린 부분만 확인하는 편이 학습 효과가 좋아.</p><div class="review-grid"><div><b>당일</b><span>해설 닫고 코드 재작성</span></div><div><b>1일 뒤</b><span>핵심 설명 없이 다시 작성</span></div><div><b>3일 뒤</b><span>유사 문제 1개</span></div><div><b>7일 뒤</b><span>패턴 이름만 보고 재현</span></div><div><b>14일 뒤</b><span>섞인 문제에서 패턴 선택</span></div></div></article><article class="card "><h3>문제를 틀렸을 때 기록할 최소한의 오답 노트</h3><div class="worksheet"><p><b>문제 이름 / 날짜:</b> ___________________________________</p><p><b>내가 처음 생각한 방법:</b> _______________________________</p><p><b>틀린 이유:</b> □ 문제 이해 □ 자료구조 선택 □ 로직 □ 구현/인덱스 □ 시간복잡도</p><p><b>다음에 알아볼 단서:</b> ___________________________________</p><p><b>다음 복습 날짜:</b> _____________________________________</p></div><p>긴 감상문을 쓸 필요 없어. 다음번에 같은 실수를 막아 줄 한두 줄이면 된다.</p></article><article class="card feature"><h3>“이제 안 보고 풀 수 있다”의 기준</h3><ul class="bullets "><li>이 알고리즘을 쓰는 이유를 내 말로 2~3문장 설명할 수 있다.</li><li>빈 화면에서 핵심 코드 뼈대를 재작성할 수 있다.</li><li>작은 입력을 직접 따라가서 각 변수 값이 어떻게 바뀌는지 설명할 수 있다.</li><li>문제가 살짝 바뀌면 어떤 부분을 수정해야 하는지 말할 수 있다.</li><li>틀렸을 때 이유를 구체적으로 기록하고, 다음날 다시 맞힐 수 있다.</li></ul></article></div>
+    </section>
+  <div class="footer-nav"><button id="prevBtn" type="button">← 이전 단원</button><button id="nextBtn" type="button">다음 단원 →</button></div>
+</main>
+<script>
+(function() {
+  const navItems = Array.from(document.querySelectorAll('.navitem'));
+  const panels = Array.from(document.querySelectorAll('.panel'));
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const main = document.getElementById('main');
+  const progress = document.getElementById('progressbar');
+  let current = 0;
+
+  function show(index) {
+    current = Math.max(0, Math.min(index, panels.length - 1));
+    navItems.forEach((item, i) => item.classList.toggle('active', i === current));
+    panels.forEach((panel, i) => panel.classList.toggle('active', i === current));
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === panels.length - 1;
+    progress.style.width = ((current + 1) / panels.length * 100) + '%';
+    if (window.matchMedia('(max-width: 800px)').matches) {
+      document.querySelector('.sidebar').scrollIntoView({behavior: 'smooth', block: 'start'});
+    } else {
+      main.scrollTop = 0;
+    }
+    try { sessionStorage.setItem('javaGuideCurrent', String(current)); } catch (error) { /* private browsing may block storage */ }
+  }
+
+  navItems.forEach((item, index) => item.addEventListener('click', () => show(index)));
+  prevBtn.addEventListener('click', () => show(current - 1));
+  nextBtn.addEventListener('click', () => show(current + 1));
+  document.addEventListener('keydown', (event) => {
+    if (event.altKey && event.key === 'ArrowLeft') show(current - 1);
+    if (event.altKey && event.key === 'ArrowRight') show(current + 1);
+  });
+  try {
+    const saved = Number(sessionStorage.getItem('javaGuideCurrent'));
+    if (Number.isInteger(saved) && saved >= 0 && saved < panels.length) show(saved);
+    else show(0);
+  } catch (error) { show(0); }
+})();
+
+function copyCode(button) {
+  const code = button.closest('.codebox').querySelector('code').innerText;
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(code).then(() => {
+      const old = button.textContent; button.textContent = '복사 완료';
+      setTimeout(() => button.textContent = old, 1300);
+    }).catch(() => fallbackCopy(code, button));
+  } else { fallbackCopy(code, button); }
+}
+function fallbackCopy(text, button) {
+  const textarea = document.createElement('textarea');
+  textarea.value = text; textarea.style.position = 'fixed'; textarea.style.opacity = '0';
+  document.body.appendChild(textarea); textarea.select();
+  try { document.execCommand('copy'); const old = button.textContent; button.textContent = '복사 완료'; setTimeout(() => button.textContent = old, 1300); }
+  catch (error) { button.textContent = '복사 실패'; setTimeout(() => button.textContent = '코드 복사', 1300); }
+  textarea.remove();
+}
+</script>
+</body>
+</html>
